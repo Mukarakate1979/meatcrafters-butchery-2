@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeatCrafters - Premium Fresh Meat | Order on WhatsApp</title>
+    <meta name="description" content="Order premium fresh meat from MeatCrafters instantly via WhatsApp. Quality cuts, affordable prices, fast delivery.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #C62828;
+            --dark-red: #8E0000;
+            --black: #212121;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --medium-gray: #757575;
+            --border-gray: #E0E0E0;
+            --success-green: #2E7D32;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--white);
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-red);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+            color: var(--white);
+            padding: 5rem 5% 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlights {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 2.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .highlight {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.15);
+            min-width: 140px;
+            transition: var(--transition);
+        }
+
+        .highlight:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .highlight i {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            display: block;
+            color: var(--white);
+        }
+
+        .highlight span {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--success-green);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: #1B5E20;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            font-size: 1.2rem;
+            padding: 1.1rem 2.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 5%;
+            background: var(--light-gray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 3.5rem;
+            color: var(--black);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-gray);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+            border-color: var(--primary-red);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.03);
+        }
+
+        .product-info {
+            padding: 1.8rem;
+        }
+
+        .product-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .product-price {
+            font-size: 1.6rem;
+            color: var(--primary-red);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quantity-selector label {
+            font-weight: 500;
+            color: var(--medium-gray);
+        }
+
+        .quantity-input {
+            width: 70px;
+            padding: 0.7rem;
+            border: 1px solid var(--border-gray);
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .cut-options {
+            margin-bottom: 1.5rem;
+        }
+
+        .cut-options select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-gray);
+            border-radius: 6px;
+            font-size: 1rem;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .cut-options select:focus {
+            border-color: var(--primary-red);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 5%;
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .about-image:hover {
+            transform: scale(1.01);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            background: var(--light-gray);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid var(--border-gray);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.8rem;
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--black);
+            font-size: 1.1rem;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 5rem 5%;
+            background: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            color: var(--primary-red);
+            font-size: 1.3rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .hours {
+            background: var(--light-gray);
+            padding: 1.8rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            border: 1px solid var(--border-gray);
+        }
+
+        .hours h4 {
+            margin-bottom: 1.2rem;
+            color: var(--black);
+            font-size: 1.3rem;
+        }
+
+        .hours p {
+            margin-bottom: 0.5rem;
+            color: var(--medium-gray);
+        }
+
+        .contact-form {
+            background: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-gray);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+            color: var(--black);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-red);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+        }
+
+        /* Order Form Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background: var(--white);
+            width: 90%;
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            border-radius: 16px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-gray);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--medium-gray);
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary-red);
+        }
+
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            color: var(--white);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        footer p {
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-red);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .highlights {
+                gap: 1.5rem;
+            }
+
+            .highlight {
+                min-width: 120px;
+                padding: 1.2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-whatsapp {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 4rem 5% 3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+
+            .btn-whatsapp {
+                font-size: 1.1rem;
+                padding: 1rem 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .product-info {
+                padding: 1.5rem;
+            }
+
+            .about-text h2,
+            .contact-info h3 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-drumstick-bite"></i>
+                MeatCrafters
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Premium Fresh Meat – Order Instantly on WhatsApp</h1>
+            <p>Get the finest quality meat delivered to your doorstep. Fresh cuts, unbeatable prices, and lightning-fast service.</p>
+            
+            <div class="highlights">
+                <div class="highlight">
+                    <i class="fas fa-leaf"></i>
+                    <span>Fresh</span>
+                </div>
+                <div class="highlight">
+                    <i class="fas fa-tag"></i>
+                    <span>Affordable</span>
+                </div>
+                <div class="highlight">
+                    <i class="fas fa-cut"></i>
+                    <span>Quality Cuts</span>
+                </div>
+                <div class="highlight">
+                    <i class="fas fa-shipping-fast"></i>
+                    <span>Fast Service</span>
+                </div>
+            </div>
+            
+            <a href="#products" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                Order on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Premium Meat Selection</h2>
+            <div class="product-grid">
+                <!-- Beef Product -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&h=300&fit=crop" alt="Fresh Beef" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Premium Beef</h3>
+                        <div class="product-price">KSh 800/kg</div>
+                        <div class="cut-options">
+                            <label for="beef-cut">Cut Options:</label>
+                            <select id="beef-cut">
+                                <option value="brisket">Brisket</option>
+                                <option value="sirloin">Sirloin</option>
+                                <option value="t-bone">T-Bone</option>
+                                <option value="ribs">Ribs</option>
+                            </select>
+                        </div>
+                        <div class="quantity-selector">
+                            <label for="beef-qty">Quantity (kg):</label>
+                            <input type="number" id="beef-qty" class="quantity-input" value="1" min="0.5" step="0.5">
+                        </div>
+                        <button class="btn btn-whatsapp" onclick="orderViaWhatsApp('Premium Beef', document.getElementById('beef-qty').value, '800', document.getElementById('beef-cut').value)">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chicken Product -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1604503468506-00769d4357d4?w=400&h=300&fit=crop" alt="Fresh Chicken" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Fresh Chicken</h3>
+                        <div class="product-price">KSh 450/kg</div>
+                        <div class="cut-options">
+                            <label for="chicken-cut">Cut Options:</label>
+                            <select id="chicken-cut">
+                                <option value="whole">Whole Chicken</option>
+                                <option value="breast">Breast</option>
+                                <option value="wings">Wings</option>
+                                <option value="thighs">Thighs</option>
+                            </select>
+                        </div>
+                        <div class="quantity-selector">
+                            <label for="chicken-qty">Quantity (kg):</label>
+                            <input type="number" id="chicken-qty" class="quantity-input" value="1" min="0.5" step="0.5">
+                        </div>
+                        <button class="btn btn-whatsapp" onclick="orderViaWhatsApp('Fresh Chicken', document.getElementById('chicken-qty').value, '450', document.getElementById('chicken-cut').value)">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Goat Product -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1554629947-334ff61d85dc?w=400&h=300&fit=crop" alt="Fresh Goat Meat" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Tender Goat Meat</h3>
+                        <div class="product-price">KSh 700/kg</div>
+                        <div class="cut-options">
+                            <label for="goat-cut">Cut Options:</label>
+                            <select id="goat-cut">
+                                <option value="leg">Leg</option>
+                                <option value="shoulder">Shoulder</option>
+                                <option value="chops">Chops</option>
+                                <option value="ribs">Ribs</option>
+                            </select>
+                        </div>
+                        <div class="quantity-selector">
+                            <label for="goat-qty">Quantity (kg):</label>
+                            <input type="number" id="goat-qty" class="quantity-input" value="1" min="0.5" step="0.5">
+                        </div>
+                        <button class="btn btn-whatsapp" onclick="orderViaWhatsApp('Tender Goat Meat', document.getElementById('goat-qty').value, '700', document.getElementById('goat-cut').value)">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pork Product -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1606923829575-67f01c9b9b5d?w=400&h=300&fit=crop" alt="Fresh Pork" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">Quality Pork</h3>
+                        <div class="product-price">KSh 600/kg</div>
+                        <div class="cut-options">
+                            <label for="pork-cut">Cut Options:</label>
+                            <select id="pork-cut">
+                                <option value="belly">Pork Belly</option>
+                                <option value="chops">Chops</option>
+                                <option value="shoulder">Shoulder</option>
+                                <option value="ribs">Ribs</option>
+                            </select>
+                        </div>
+                        <div class="quantity-selector">
+                            <label for="pork-qty">Quantity (kg):</label>
+                            <input type="number" id="pork-qty" class="quantity-input" value="1" min="0.5" step="0.5">
+                        </div>
+                        <button class="btn btn-whatsapp" onclick="orderViaWhatsApp('Quality Pork', document.getElementById('pork-qty').value, '600', document.getElementById('pork-cut').value)">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="btn btn-whatsapp" onclick="openOrderForm()">
+                    <i class="fas fa-shopping-cart"></i> Custom Order Form
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About MeatCrafters</h2>
+                    <p>Welcome to MeatCrafters, your trusted partner for premium quality fresh meat in Kenya. We are passionate about providing our customers with the finest cuts of meat, sourced from local farms that meet our strict quality standards.</p>
+                    <p>Our commitment to freshness, hygiene, and customer satisfaction sets us apart. Every piece of meat is carefully selected, professionally cut, and delivered fresh to your doorstep. We believe in building lasting relationships with our customers through transparency, fair pricing, and exceptional service.</p>
+                    <p>With our easy WhatsApp ordering system, getting your favorite cuts has never been simpler. Experience the MeatCrafters difference today!</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1554317754-04da5c88a8be?w=600&h=400&fit=crop" alt="Butcher at work" style="width: 100%; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The best meat in town! Always fresh and the delivery is super fast. The WhatsApp ordering makes everything so convenient."</p>
+                    <p class="testimonial-author">- Sarah M., Westlands</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Quality cuts at great prices. I've been ordering from MeatCrafters for months and they never disappoint. Highly recommended!"</p>
+                    <p class="testimonial-author">- John K., Lavington</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Professional service and excellent meat quality. The butchers really know their craft. Will definitely keep ordering!"</p>
+                    <p class="testimonial-author">- Mary W., Karen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span><strong>WhatsApp:</strong> +254 712 345 678</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span><strong>Phone:</strong> +254 712 345 678</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span><strong>Email:</strong> info@meatcrafters.co.ke</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span><strong>Location:</strong> Ngong Road, Nairobi</span>
+                    </div>
+                    
+                    <div class="hours">
+                        <h4>Operating Hours</h4>
+                        <p><strong>Monday - Friday:</strong> 7:00 AM - 7:00 PM</p>
+                        <p><strong>Saturday:</strong> 7:00 AM - 6:00 PM</p>
+                        <p><strong>Sunday:</strong> 8:00 AM - 4:00 PM</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Quick Order Form</h3>
+                    <form id="orderForm" onsubmit="submitOrderForm(event)">
+                        <div class="form-group">
+                            <label for="customerName">Your Name *</label>
+                            <input type="text" id="customerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone">Phone Number *</label>
+                            <input type="tel" id="customerPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productSelect">Product *</label>
+                            <select id="productSelect" required>
+                                <option value="">Select Product</option>
+                                <option value="Premium Beef">Premium Beef - KSh 800/kg</option>
+                                <option value="Fresh Chicken">Fresh Chicken - KSh 450/kg</option>
+                                <option value="Tender Goat Meat">Tender Goat Meat - KSh 700/kg</option>
+                                <option value="Quality Pork">Quality Pork - KSh 600/kg</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderQuantity">Quantity (kg) *</label>
+                            <input type="number" id="orderQuantity" min="0.5" step="0.5" value="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="deliveryMethod">Delivery Method *</label>
+                            <select id="deliveryMethod" required>
+                                <option value="">Select Option</option>
+                                <option value="delivery">Home Delivery</option>
+                                <option value="pickup">Store Pickup</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderNotes">Additional Notes</label>
+                            <textarea id="orderNotes" rows="3" placeholder="Any special instructions..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-whatsapp" style="width: 100%;">
+                            <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeOrderForm()">&times;</span>
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary-red);">Custom Order Form</h2>
+            <form id="modalOrderForm" onsubmit="submitModalOrderForm(event)">
+                <div class="form-group">
+                    <label for="modalCustomerName">Your Name *</label>
+                    <input type="text" id="modalCustomerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="modalCustomerPhone">Phone Number *</label>
+                    <input type="tel" id="modalCustomerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="modalProductSelect">Product *</label>
+                    <select id="modalProductSelect" required>
+                        <option value="">Select Product</option>
+                        <option value="Premium Beef">Premium Beef - KSh 800/kg</option>
+                        <option value="Fresh Chicken">Fresh Chicken - KSh 450/kg</option>
+                        <option value="Tender Goat Meat">Tender Goat Meat - KSh 700/kg</option>
+                        <option value="Quality Pork">Quality Pork - KSh 600/kg</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modalOrderQuantity">Quantity (kg) *</label>
+                    <input type="number" id="modalOrderQuantity" min="0.5" step="0.5" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="modalCutOptions">Cut Options</label>
+                    <select id="modalCutOptions">
+                        <option value="">Select Cut</option>
+                        <option value="brisket">Brisket</option>
+                        <option value="sirloin">Sirloin</option>
+                        <option value="t-bone">T-Bone</option>
+                        <option value="ribs">Ribs</option>
+                        <option value="whole">Whole</option>
+                        <option value="breast">Breast</option>
+                        <option value="wings">Wings</option>
+                        <option value="thighs">Thighs</option>
+                        <option value="leg">Leg</option>
+                        <option value="shoulder">Shoulder</option>
+                        <option value="chops">Chops</option>
+                        <option value="belly">Pork Belly</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modalDeliveryMethod">Delivery Method *</label>
+                    <select id="modalDeliveryMethod" required>
+                        <option value="">Select Option</option>
+                        <option value="delivery">Home Delivery</option>
+                        <option value="pickup">Store Pickup</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modalOrderNotes">Additional Notes</label>
+                    <textarea id="modalOrderNotes" rows="3" placeholder="Any special instructions..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-whatsapp" style="width: 100%;">
+                    <i class="fab fa-whatsapp"></i> Send Order via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <div class="floating-whatsapp" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MeatCrafters. All rights reserved.</p>
+        <p>Premium Quality Meat | Fast Delivery | Best Prices in Town</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // WhatsApp Configuration
+        const WHATSAPP_NUMBER = '+254712345678'; // Replace with your WhatsApp number
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'var(--white)';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = 'var(--shadow)';
+        });
+
+        // Order via WhatsApp function
+        function orderViaWhatsApp(productName, quantity, pricePerKg, cutOption = '') {
+            const totalPrice = (quantity * pricePerKg).toFixed(0);
+            let message = `Hello MeatCrafters, I would like to order:\n\n`;
+            message += `Product: ${productName}\n`;
+            message += `Quantity: ${quantity} kg\n`;
+            if (cutOption) {
+                message += `Cut: ${cutOption}\n`;
+            }
+            message += `Total Price: KSh ${totalPrice}\n\n`;
+            message += `Please confirm availability and delivery options.`;
+            
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Open general WhatsApp
+        function openWhatsApp() {
+            const message = 'Hello MeatCrafters, I would like to place an order.';
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Order form functions
+        function openOrderForm() {
+            document.getElementById('orderModal').style.display = 'block';
+        }
+
+        function closeOrderForm() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        // Submit order form
+        function submitOrderForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const product = document.getElementById('productSelect').value;
+            const quantity = document.getElementById('orderQuantity').value;
+            const delivery = document.getElementById('deliveryMethod').value;
+            const notes = document.getElementById('orderNotes').value;
+            
+            let message = `Hello MeatCrafters, I would like to place an order:\n\n`;
+            message += `Name: ${name}\n`;
+            message += `Phone: ${phone}\n`;
+            message += `Product: ${product}\n`;
+            message += `Quantity: ${quantity} kg\n`;
+            message += `Delivery Method: ${delivery === 'delivery' ? 'Home Delivery' : 'Store Pickup'}\n`;
+            if (notes) {
+                message += `Notes: ${notes}\n`;
+            }
+            message += `\nPlease confirm my order.`;
+            
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            document.getElementById('orderForm').reset();
+        }
+
+        // Submit modal order form
+        function submitModalOrderForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('modalCustomerName').value;
+            const phone = document.getElementById('modalCustomerPhone').value;
+            const product = document.getElementById('modalProductSelect').value;
+            const quantity = document.getElementById('modalOrderQuantity').value;
+            const cut = document.getElementById('modalCutOptions').value;
+            const delivery = document.getElementById('modalDeliveryMethod').value;
+            const notes = document.getElementById('modalOrderNotes').value;
+            
+            let message = `Hello MeatCrafters, I would like to place an order:\n\n`;
+            message += `Name: ${name}\n`;
+            message += `Phone: ${phone}\n`;
+            message += `Product: ${product}\n`;
+            message += `Quantity: ${quantity} kg\n`;
+            if (cut) {
+                message += `Cut: ${cut}\n`;
+            }
+            message += `Delivery Method: ${delivery === 'delivery' ? 'Home Delivery' : 'Store Pickup'}\n`;
+            if (notes) {
+                message += `Notes: ${notes}\n`;
+            }
+            message += `\nPlease confirm my order.`;
+            
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER.replace('+', '')}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Close modal and reset form
+            closeOrderForm();
+            document.getElementById('modalOrderForm').reset();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                closeOrderForm();
+            }
+        }
+
+        // Update active navigation on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+            
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    if (navLink) {
+                        navLink.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // Add loading animation for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.5s ease';
+        });
+    </script>
+</body>
+</html>
